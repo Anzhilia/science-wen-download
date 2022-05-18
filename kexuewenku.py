@@ -1,4 +1,3 @@
-#科学文库一键下载
 #获取cookie
 import requests
 import json
