@@ -28,8 +28,8 @@ def get_name(book_url):
         return re.findall(j, responsepdf.text)[0]
 
 def post_id(id_book):
-    url='http://159.226.241.32:8093/api/file/add'
-    params='{"params":{"userName":"Guest","userId":"b31f5c2e52b211eab864005056952de2","file":"http://159.226.241.32:81/'+id_book+'.pdf"}}'
+    url='http:///api/file/add'
+    params='{"params":{"userName":"Guest","userId":"b31f5c2e52b211eab864005056952de2","file":"http:///'+id_book+'.pdf"}}'
     type_biao='http'
     data={
         "params":params,
@@ -53,7 +53,7 @@ def post_id(id_book):
     return id_data['result']
 
 def get_pdf(result):
-    url='http://159.226.241.32:8093/api/file/'+result+'/getDocumentbuffer'
+    url='http:///api/file/'+result+'/getDocumentbuffer'
     headers = {
         'Accept': '*/*',
         'Accept-Encoding': 'gzip, deflate',
@@ -93,8 +93,8 @@ def download(url: str, fname: str):
 
             
 def big_file_pre(id_book):
-    url='http://159.226.241.32:8093/spi/v2/doc/pretreat?r='+str(int(round(time.time() * 1000)))
-    params='{"params":{"userName":"Guest","userId":"b31f5c2e52b211eab864005056952de2","file":"http://159.226.241.32:81/'+id_book+'.pdf"}}'
+    url='http:///spi/v2/doc/pretreat?r='+str(int(round(time.time() * 1000)))
+    params='{"params":{"userName":"Guest","userId":"b31f5c2e52b211eab864005056952de2","file":"http:///'+id_book+'.pdf"}}'
     type_biao='http'
     data={
         "filetype":type_biao,
@@ -122,7 +122,7 @@ def big_file_pre(id_book):
     return id_data['resultBody']['taskid']
 
 def big_file_qu(taskid):
-    url='http://159.226.241.32:8093/api/v2/task/'+taskid+'/query?r='+str(int(round(time.time() * 1000)))
+    url='http:///api/v2/task/'+taskid+'/query?r='+str(int(round(time.time() * 1000)))
     headers = {
         'Accept': '*/*',
         'Accept-Encoding': 'gzip, deflate',
@@ -169,7 +169,7 @@ else:
                 time.sleep(2)
     else:
         print(result)
-    url='http://159.226.241.32:8093/api/file/'+result+'/getDocumentbuffer'
+    url='http:///api/file/'+result+'/getDocumentbuffer'
     name=name_bo+".pdf"
     print("开始下载...")
     download(url,name)
